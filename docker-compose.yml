@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      target: development
+    volumes:
+      - ${PWD}:/var/www/html
+      - ${PWD}/php.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - db
+    networks:
+      - invoice-network
+
+  webserver:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ${PWD}:/var/www/html
+      - ${PWD}/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - invoice-network
+
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: invoice_db
+      POSTGRES_USER: invoice_user
+      POSTGRES_PASSWORD: invoice_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - invoice-network
+
+networks:
+  invoice-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
