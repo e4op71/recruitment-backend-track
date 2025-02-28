@@ -1,12 +1,14 @@
 # Instructions for Candidates
 
 ## Submission Process
-Candidates must **fork** the repository and, once they have completed their work, submit the link to their forked repository via email to their recruitment contact.
 
+Candidates must **fork** the repository and, once they have completed their work, submit the link to their forked repository via email to their recruitment contact.
 ## Questions and Clarifications
+
 Any question and clarification must be forwarded opening an issue on this repository.
 
 ## Scoring Criteria
+
 Each feature and best practice contributes to a total score of **100 points**, allowing candidates to self-evaluate their implementation. The distribution is as follows:
 
 - **Docker Environment (15 points)**
@@ -58,10 +60,12 @@ This is a Dockerized PHP-based Invoice Management API project. It provides endpo
 ## 1. Docker Environment
 
 ### Multistage Dockerfile:
+
 - Use **PHP 8.3** (or the latest stable version) for the development stage.
 - Production stage with **PHP 8.3 Alpine** for a lightweight image.
 
 ### Docker Compose:
+
 - Configure a `docker-compose.yml` file to orchestrate the following containers:
   - **PHP**.
   - **Database** (MySQL or PostgreSQL).
@@ -71,9 +75,11 @@ This is a Dockerized PHP-based Invoice Management API project. It provides endpo
 ## 2. Project Structure
 
 ### MVC Framework:
+
 - Use a PHP MVC framework of your choice (**Laravel**, **Symfony**, or **Slim**).
 
 ### Database and Migrations:
+
 - Use migrations to create and manage the following tables:
   - **users**: Manage user information.
   - **tax_profiles**: Manage tax profiles associated with users.
@@ -81,6 +87,7 @@ This is a Dockerized PHP-based Invoice Management API project. It provides endpo
 - Use an ORM (e.g., **Eloquent** in Laravel or **Doctrine** in Symfony).
 
 ### RESTful API:
+
 - Create the following CRUD endpoints:
   - **Users**: Create, read, update, delete users.
   - **Tax Profiles**: Create, read, update, delete tax profiles.
@@ -88,11 +95,13 @@ This is a Dockerized PHP-based Invoice Management API project. It provides endpo
 - Responses should be in **JSON** format with appropriate **HTTP status codes**.
 
 ### Pagination and Filters:
+
 - Implement **pagination** for query results.
 - Implement **filters** for various fields (e.g., filter by name, date, invoice status).
 - Filters and pagination should be configurable via query strings.
 
 ### Tests:
+
 - Write **unit** and **integration tests** for the APIs.
 - Use **fixtures** to load test data into the database.
 - Test proper handling of data, relationships, and errors.
@@ -100,6 +109,7 @@ This is a Dockerized PHP-based Invoice Management API project. It provides endpo
 ## 3. Documentation
 
 ### README:
+
 - Instructions for setting up the environment with Docker.
 - Steps for running the project, running migrations, testing the APIs, and testing the code.
 - Provide an overview of the project and its features.
