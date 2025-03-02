@@ -17,7 +17,8 @@ use JsonSerializable;
 
 class JsonResource implements ArrayAccess, JsonSerializable, Responsable, UrlRoutable
 {
-    use ConditionallyLoadsAttributes, DelegatesToResource;
+    use ConditionallyLoadsAttributes;
+    use DelegatesToResource;
 
     /**
      * The resource instance.
