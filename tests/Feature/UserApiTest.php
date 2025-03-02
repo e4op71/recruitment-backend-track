@@ -58,4 +58,17 @@ class UserApiTest extends TestCase
                 'email' => $userData['email']
             ]);
     }
+
+    #[Test]
+    public function it_can_show_a_user()
+    {
+        $response = $this->getJson("/api/users/{$this->user->id}");
+
+        $response->assertStatus(200)
+            ->assertJsonFragment(
+                [
+                'name' => $this->user->name,
+                'email' => $this->user->email]
+            );
+    }
 }
