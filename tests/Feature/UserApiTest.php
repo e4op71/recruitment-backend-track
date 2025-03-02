@@ -71,4 +71,20 @@ class UserApiTest extends TestCase
                 'email' => $this->user->email]
             );
     }
+
+    #[Test]
+    public function it_can_update_a_user()
+    {
+        $updatedData = [
+            'name' => 'Updated Name',
+            'email' => 'updated@example.com',
+        ];
+
+        $response = $this->patchJson("/api/users/{$this->user->id}", $updatedData);
+
+        $response->assertStatus(200)
+            ->assertJsonFragment($updatedData);
+
+        $this->assertDatabaseHas('users', $updatedData);
+    }
 }
