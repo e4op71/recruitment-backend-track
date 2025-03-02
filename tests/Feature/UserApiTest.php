@@ -67,8 +67,9 @@ class UserApiTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonFragment(
                 [
-                'name' => $this->user->name,
-                'email' => $this->user->email]
+                    'name' => $this->user->name,
+                    'email' => $this->user->email
+                ]
             );
     }
 
@@ -86,5 +87,15 @@ class UserApiTest extends TestCase
             ->assertJsonFragment($updatedData);
 
         $this->assertDatabaseHas('users', $updatedData);
+    }
+
+    #[Test]
+    public function it_can_destroy_a_user()
+    {
+
+        $response = $this->deleteJson("/api/users/{$this->user->id}");
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing('users', ['id' => $this->user->id]);
     }
 }
